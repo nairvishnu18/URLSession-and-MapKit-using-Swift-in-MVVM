@@ -23,6 +23,16 @@ struct CarDataModel: Codable {
     }
 }
 
+
+enum SeriesType: String, Codable {
+    case lux = "LUX"
+    case regular = "REGULAR"
+}
+
+enum Make: String, Codable {
+    case bmw = "BMW"
+}
+
 // MARK: - VehicleDetails
 struct VehicleDetails: Codable {
     let name: String
@@ -34,20 +44,8 @@ struct VehicleDetails: Codable {
     }
 }
 
-enum SeriesType: String, Codable {
-    case lux = "LUX"
-    case regular = "REGULAR"
-}
-
-enum Make: String, Codable {
-    case bmw = "BMW"
-}
 
 // MARK: - Location
 struct Location: Codable {
     let latitude, longitude: Double
 }
-
-
-
-typealias DataModel = [CarDataModel]
