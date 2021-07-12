@@ -11,8 +11,8 @@ import UIKit
 
 
 extension UIImageView {
-    public func load(urlstring: String) {
-        guard let url = URL(string: urlstring) else {
+    public func load(ImageURL: String) {
+        guard let url = URL(string: ImageURL) else {
             return
         }
         

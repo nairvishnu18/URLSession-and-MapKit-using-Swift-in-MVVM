@@ -8,24 +8,28 @@
 
 import Foundation
 
-struct ApiHanlder {
+struct ApiHandler {
     
     func getAPIData<T: Decodable>(from requestUrl: URL, resultType: T.Type, completionHandler: @escaping(_ result: T) -> Void) {
-        
-        URLSession.shared.dataTask(with: requestUrl) { (responseData, HttpURLResponse, error) in
-            if (error == nil && responseData?.count != 0) {
-                
-                // Parse ResponseData
-                let decoder = JSONDecoder()
-                do {
-                    let result = try decoder.decode(T.self, from: responseData!)
-                    completionHandler(result)
+        URLSession.shared.dataTask(with: requestUrl) { (data, URLResponse, error) in
+            guard let responseData = data else {
+                debugPrint("Data Error")
+                if let error = error {
+                    debugPrint(error.localizedDescription)
                 }
-                catch let error {
-                    debugPrint("Error Occured while Parsing: \(error.localizedDescription)")
-                }
+                return
             }
-        }
+            // Parse ResponseData
+            let decoder = JSONDecoder()
+            do {
+                let result = try decoder.decode(T.self, from: responseData)
+//                debugPrint(result)
+                completionHandler(result)
+            }
+            catch let error {
+                    debugPrint("Error Occured while Parsing: \(error.localizedDescription)")
+            }
+        }.resume()
         
     }
 }
