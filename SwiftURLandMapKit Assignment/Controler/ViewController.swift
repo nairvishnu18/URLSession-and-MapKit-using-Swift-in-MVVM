@@ -9,40 +9,38 @@
 import UIKit
 import MapKit
 
-class ViewController: UIViewController, RequestStatus {
+class ViewController: UIViewController, OutputDelegate {
     
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var mapView: MKMapView!
     var viewModel: ViewModelOpeartions!
-    var vehicleOperations: VehicleOperations!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        vehicleOperations = VehicleServices()
-        viewModel = ViewModelController(_requestStatus: self)
+        viewModel = ViewModelController(_output: self)
         viewModel.getData()
-        
+      
     }
     
     func didSuccess() {
         DispatchQueue.main.async {
             self.tableView.reloadData()
+            self.mapView.setRegion(self.viewModel.getRegionCoordinates(), animated: true)
+            self.mapView.addAnnotations(self.viewModel.addAnnotationstoMap())
+            
         }
     }
     
     func didFail() {
         debugPrint("Operation Failed!!")
     }
-    
-
-
+ 
 }
 
 extension ViewController: UITableViewDelegate, UITableViewDataSource {
     
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        //return viewModel.dataModel!.count
         return viewModel.getRowCount()
         
     }
@@ -58,14 +56,24 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
         return tableCell
     }
     
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+
+}
+
+extension ViewController: MKMapViewDelegate {
+    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
+        var annotationView = mapView.dequeueReusableAnnotationView(withIdentifier: "custom")
         
-        let annotations = vehicleOperations.locateVehicle(
-            latitude: viewModel.dataModel![indexPath.row].location.latitude,
-            longitude: viewModel.dataModel![indexPath.row].location.longitude)
+        if annotationView == nil {
+            annotationView = MKAnnotationView(annotation: annotation, reuseIdentifier: "custom")
+            annotationView?.canShowCallout = true
+        }
+        else {
+            annotationView?.annotation = annotation
+        }
         
-        mapView.addAnnotation(annotations)
+        annotationView?.image = UIImage(named: "pincar")
         
+        return annotationView
     }
     
 }
