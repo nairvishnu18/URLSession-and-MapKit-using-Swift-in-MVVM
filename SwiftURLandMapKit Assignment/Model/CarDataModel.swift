@@ -8,16 +8,16 @@
 
 import Foundation
 
-
-// MARK: - WelcomeElement
+// MARK: - Root Model
 struct CarDataModel: Codable {
     let modelName: String
     let carImageURL: String
+    let licensePlate: String
     let vehicleDetails: VehicleDetails
     let location: Location
-    
+
     enum CodingKeys: String, CodingKey {
-        case modelName
+        case modelName, licensePlate
         case carImageURL = "carImageUrl"
         case vehicleDetails, location
     }
@@ -38,7 +38,7 @@ struct VehicleDetails: Codable {
     let name: String
     let make: Make
     let series: SeriesType
-    
+
     enum CodingKeys: String, CodingKey {
         case name, make,series
     }
