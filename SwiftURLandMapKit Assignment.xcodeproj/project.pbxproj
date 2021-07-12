@@ -72,7 +72,6 @@
 				9AB2C28F2696FFF300A2F7CA /* Car Image Extension */,
 				9AB2C27C2696FF1F00A2F7CA /* AppDelegate.swift */,
 				9AB2C2832696FF2D00A2F7CA /* Assets.xcassets */,
-				9AB2C2852696FF2D00A2F7CA /* LaunchScreen.storyboard */,
 				9AB2C2882696FF2D00A2F7CA /* Info.plist */,
 			);
 			path = "SwiftURLandMapKit Assignment";
@@ -107,6 +106,7 @@
 			isa = PBXGroup;
 			children = (
 				9AB2C2802696FF1F00A2F7CA /* Main.storyboard */,
+				9AB2C2852696FF2D00A2F7CA /* LaunchScreen.storyboard */,
 			);
 			path = View;
 			sourceTree = "<group>";
