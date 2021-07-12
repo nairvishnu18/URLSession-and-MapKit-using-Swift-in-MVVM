@@ -11,8 +11,7 @@ import UIKit
 class CarDeatilsTableViewCell: UITableViewCell {
 
     @IBOutlet weak var carImage: UIImageView!
-    @IBOutlet weak var seriesType: UILabel!
-    @IBOutlet weak var carName: UILabel!
+    @IBOutlet weak var licensePlate: UILabel!
     @IBOutlet weak var makeName: UILabel!
     @IBOutlet weak var modelName: UILabel!
     
@@ -23,4 +22,5 @@ class CarDeatilsTableViewCell: UITableViewCell {
         super.setSelected(selected, animated: animated)
     }
 
+    
 }

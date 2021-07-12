@@ -12,22 +12,29 @@ import MapKit
 class ViewController: UIViewController, RequestStatus {
     
     @IBOutlet weak var tableView: UITableView!
-    @IBOutlet weak var mapKitView: MKMapView!
+    @IBOutlet weak var mapView: MKMapView!
     var viewModel: ViewModelOpeartions!
+    var vehicleOperations: VehicleOperations!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        viewModel = ViewModelController(_client: ApiHanlder(), _requestStatus: self)
+        vehicleOperations = VehicleServices()
+        viewModel = ViewModelController(_requestStatus: self)
         viewModel.getData()
+        
     }
     
     func didSuccess() {
-        tableView.reloadData()
+        DispatchQueue.main.async {
+            self.tableView.reloadData()
+        }
     }
     
     func didFail() {
-        debugPrint("Failed Opeartion!!")
+        debugPrint("Operation Failed!!")
     }
+    
+
 
 }
 
@@ -35,19 +42,31 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
     
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return viewModel.dataModel!.count
+        //return viewModel.dataModel!.count
+        return viewModel.getRowCount()
+        
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let tableCell = tableView.dequeueReusableCell(withIdentifier: "DataCell", for: indexPath) as! CarDeatilsTableViewCell
-        tableCell.seriesType.text = viewModel.dataModel![indexPath.row].vehicleDetails.series.rawValue
-        tableCell.makeName.text = viewModel.dataModel![indexPath.row].vehicleDetails.make.rawValue
-        tableCell.carName.text = viewModel.dataModel![indexPath.row].vehicleDetails.name
         
+        tableCell.carImage.load(ImageURL: viewModel.dataModel![indexPath.row].carImageURL)
+        tableCell.modelName.text = viewModel.dataModel![indexPath.row].modelName
+        tableCell.makeName.text = viewModel.dataModel![indexPath.row].vehicleDetails.make.rawValue
+        tableCell.licensePlate.text = viewModel.dataModel![indexPath.row].licensePlate
         
         return tableCell
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        let annotations = vehicleOperations.locateVehicle(
+            latitude: viewModel.dataModel![indexPath.row].location.latitude,
+            longitude: viewModel.dataModel![indexPath.row].location.longitude)
+        
+        mapView.addAnnotation(annotations)
+        
+    }
     
 }
 
