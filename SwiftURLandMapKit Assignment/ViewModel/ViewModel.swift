@@ -40,15 +40,18 @@ class ViewModelController: ViewModelOpeartions {
     
     
     func getData() {
-        let requestURL = "http://www.mocky.io/v2/5dc3f2c13000003c003477a0"
-        apiHandler.getAPIData(from: URL(string: requestURL)!, resultType: [CarDataModel].self) { [weak self] (apiData, error)  in
+        guard let requestURL = Constants.baseURL else {
+            debugPrint(CustomErrors.invalidURL.rawValue)
+            return
+        }
+        apiHandler.getAPIData(from:requestURL, resultType: [CarDataModel].self) { [weak self] (apiData, error)  in
             if error == nil {
                 //debugPrint(carData)
                 self?.dataModel = apiData
                 self?.outputDelegate?.didSuccess()
                 
             } else  {
-                debugPrint("Error in assigning to Model")
+                debugPrint(CustomErrors.modelDataError.rawValue)
                 self?.outputDelegate?.didFail()
             }
         }

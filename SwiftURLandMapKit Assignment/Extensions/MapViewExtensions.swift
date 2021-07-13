@@ -21,7 +21,7 @@ extension ViewController: MKMapViewDelegate {
             annotationView?.annotation = annotation
         }
         
-        annotationView?.image = UIImage(named: "carIcon")
+        annotationView?.image = Constants.annotationImage
         
         return annotationView
     }

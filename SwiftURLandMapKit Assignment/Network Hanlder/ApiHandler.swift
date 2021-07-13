@@ -13,7 +13,7 @@ struct ApiHandler {
     func getAPIData<T: Decodable>(from requestUrl: URL, resultType: T.Type, completionHandler: @escaping(_ result: T?, Error?) -> Void) {
         URLSession.shared.dataTask(with: requestUrl) { (data, URLResponse, error) in
             guard let responseData = data else {
-                debugPrint("Data Error")
+                debugPrint(CustomErrors.noDataFound.rawValue)
                 if let error = error {
                     completionHandler(nil,error)
                     debugPrint(error.localizedDescription)
@@ -28,7 +28,7 @@ struct ApiHandler {
                 completionHandler(result, nil)
             }
             catch let error {
-                debugPrint("Error Occured while Parsing: \(error.localizedDescription)")
+                debugPrint("\(error.localizedDescription)")
             }
             }.resume()
         

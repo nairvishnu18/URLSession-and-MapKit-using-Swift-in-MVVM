@@ -25,10 +25,11 @@ extension UIImageView {
                 }
             } else {
                 DispatchQueue.main.async {
-                    self.image = UIImage(named: "defaultImage")
+                    self.image = Constants.defaultImage
                 }
                 
             }
         }
     }
+    
 }

@@ -32,7 +32,7 @@ class ViewController: UIViewController, OutputDelegate {
     }
     
     func didFail() {
-        debugPrint("Operation Failed!!")
+        debugPrint(CustomErrors.didFail.rawValue)
     }
  
 }
