@@ -9,12 +9,13 @@
 import Foundation
 
 struct ApiHandler {
-    
-    func getAPIData<T: Decodable>(from requestUrl: URL, resultType: T.Type, completionHandler: @escaping(_ result: T) -> Void) {
+   
+    func getAPIData<T: Decodable>(from requestUrl: URL, resultType: T.Type, completionHandler: @escaping(_ result: T?, Error?) -> Void) {
         URLSession.shared.dataTask(with: requestUrl) { (data, URLResponse, error) in
             guard let responseData = data else {
                 debugPrint("Data Error")
                 if let error = error {
+                    completionHandler(nil,error)
                     debugPrint(error.localizedDescription)
                 }
                 return
@@ -23,13 +24,13 @@ struct ApiHandler {
             let decoder = JSONDecoder()
             do {
                 let result = try decoder.decode(T.self, from: responseData)
-//                debugPrint(result)
-                completionHandler(result)
+                // debugPrint(result)
+                completionHandler(result, nil)
             }
             catch let error {
-                    debugPrint("Error Occured while Parsing: \(error.localizedDescription)")
+                debugPrint("Error Occured while Parsing: \(error.localizedDescription)")
             }
-        }.resume()
+            }.resume()
         
     }
 }
