@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		9A9B5A3526984BDD0068F308 /* ApiHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A9B5A3426984BDD0068F308 /* ApiHandler.swift */; };
 		9A9B5A37269853430068F308 /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A9B5A36269853430068F308 /* ViewModel.swift */; };
+		9AA1A3C3269D609C00A858B8 /* TableViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AA1A3C2269D609C00A858B8 /* TableViewExtensions.swift */; };
+		9AA1A3C5269D60AE00A858B8 /* MapViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AA1A3C4269D60AE00A858B8 /* MapViewExtensions.swift */; };
+		9AA1A3C7269D634B00A858B8 /* ImageViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AA1A3C6269D634B00A858B8 /* ImageViewExtensions.swift */; };
 		9AB2C27D2696FF1F00A2F7CA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AB2C27C2696FF1F00A2F7CA /* AppDelegate.swift */; };
 		9AB2C27F2696FF1F00A2F7CA /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AB2C27E2696FF1F00A2F7CA /* ViewController.swift */; };
 		9AB2C2822696FF1F00A2F7CA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9AB2C2802696FF1F00A2F7CA /* Main.storyboard */; };
@@ -16,12 +19,14 @@
 		9AB2C2872696FF2D00A2F7CA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9AB2C2852696FF2D00A2F7CA /* LaunchScreen.storyboard */; };
 		9AB2C29526970E0500A2F7CA /* CarDeatilsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AB2C29426970E0500A2F7CA /* CarDeatilsTableViewCell.swift */; };
 		9AB2C29726970F5300A2F7CA /* CarDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AB2C29626970F5300A2F7CA /* CarDataModel.swift */; };
-		9AB2C2992697120000A2F7CA /* ImageExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AB2C2982697120000A2F7CA /* ImageExtension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		9A9B5A3426984BDD0068F308 /* ApiHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiHandler.swift; sourceTree = "<group>"; };
 		9A9B5A36269853430068F308 /* ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
+		9AA1A3C2269D609C00A858B8 /* TableViewExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewExtensions.swift; sourceTree = "<group>"; };
+		9AA1A3C4269D60AE00A858B8 /* MapViewExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewExtensions.swift; sourceTree = "<group>"; };
+		9AA1A3C6269D634B00A858B8 /* ImageViewExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageViewExtensions.swift; sourceTree = "<group>"; };
 		9AB2C2792696FF1F00A2F7CA /* SwiftURLandMapKit Assignment.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "SwiftURLandMapKit Assignment.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		9AB2C27C2696FF1F00A2F7CA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9AB2C27E2696FF1F00A2F7CA /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -31,7 +36,6 @@
 		9AB2C2882696FF2D00A2F7CA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9AB2C29426970E0500A2F7CA /* CarDeatilsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarDeatilsTableViewCell.swift; sourceTree = "<group>"; };
 		9AB2C29626970F5300A2F7CA /* CarDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarDataModel.swift; sourceTree = "<group>"; };
-		9AB2C2982697120000A2F7CA /* ImageExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageExtension.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -89,7 +93,9 @@
 		9AB2C28F2696FFF300A2F7CA /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				9AB2C2982697120000A2F7CA /* ImageExtension.swift */,
+				9AA1A3C2269D609C00A858B8 /* TableViewExtensions.swift */,
+				9AA1A3C4269D60AE00A858B8 /* MapViewExtensions.swift */,
+				9AA1A3C6269D634B00A858B8 /* ImageViewExtensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -200,11 +206,13 @@
 			files = (
 				9AB2C27F2696FF1F00A2F7CA /* ViewController.swift in Sources */,
 				9A9B5A3526984BDD0068F308 /* ApiHandler.swift in Sources */,
+				9AA1A3C7269D634B00A858B8 /* ImageViewExtensions.swift in Sources */,
 				9AB2C27D2696FF1F00A2F7CA /* AppDelegate.swift in Sources */,
 				9AB2C29726970F5300A2F7CA /* CarDataModel.swift in Sources */,
-				9AB2C2992697120000A2F7CA /* ImageExtension.swift in Sources */,
 				9AB2C29526970E0500A2F7CA /* CarDeatilsTableViewCell.swift in Sources */,
+				9AA1A3C5269D60AE00A858B8 /* MapViewExtensions.swift in Sources */,
 				9A9B5A37269853430068F308 /* ViewModel.swift in Sources */,
+				9AA1A3C3269D609C00A858B8 /* TableViewExtensions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
