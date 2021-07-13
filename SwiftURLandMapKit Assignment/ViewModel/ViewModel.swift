@@ -28,7 +28,7 @@ protocol OutputDelegate: class {
 
 
 class ViewModelController: ViewModelOpeartions {
-
+    
     var dataModel: [CarDataModel]?
     private let apiHandler : ApiHandler
     weak var outputDelegate: OutputDelegate?
@@ -41,10 +41,10 @@ class ViewModelController: ViewModelOpeartions {
     
     func getData() {
         let requestURL = "http://www.mocky.io/v2/5dc3f2c13000003c003477a0"
-        apiHandler.getAPIData(from: URL(string: requestURL)!, resultType: [CarDataModel].self) { [weak self] (carData) in
-            if carData.count != 0 {
+        apiHandler.getAPIData(from: URL(string: requestURL)!, resultType: [CarDataModel].self) { [weak self] (apiData, error)  in
+            if error == nil {
                 //debugPrint(carData)
-                self?.dataModel = carData
+                self?.dataModel = apiData
                 self?.outputDelegate?.didSuccess()
                 
             } else  {
@@ -76,22 +76,16 @@ class ViewModelController: ViewModelOpeartions {
             )
             pinAnnotations.append(annotations)
         }
-
+        
         return pinAnnotations
     }
-
+    
     func getRegionCoordinates() -> MKCoordinateRegion {
         let centerCoordinates = CLLocationCoordinate2D(latitude: 12.950415, longitude: 77.642605)
-//        let regionCoordinates = MKCoordinateRegion(
-//            center: centerCoordinates,
-//            span: MKCoordinateSpan(
-//                latitudeDelta: 0.1,
-//                longitudeDelta: 0.1))
+        let mapCoordinates = MKCoordinateRegion(center: centerCoordinates, latitudinalMeters: 600, longitudinalMeters: 600)
         
-        let mapCoordinates = MKCoordinateRegion(center: centerCoordinates, latitudinalMeters: 500, longitudinalMeters: 500)
-
         return mapCoordinates
     }
-
+    
 }
 
