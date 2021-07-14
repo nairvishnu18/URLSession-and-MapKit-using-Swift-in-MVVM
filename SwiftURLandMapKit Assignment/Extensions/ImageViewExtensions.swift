@@ -11,6 +11,9 @@ import UIKit
 
 
 extension UIImageView {
+    /// Displays Image on UI from given URL.
+    ///
+    /// - Parameter ImageURL: URL of Image to be displayed.
     public func load(ImageURL: String) {
         guard let url = URL(string: ImageURL) else {
             return

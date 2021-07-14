@@ -9,7 +9,13 @@
 import Foundation
 
 struct ApiHandler {
-   
+    
+    /// A generic API Hanlder to parse the request URL and Decode it to given type.
+    ///
+    /// - Parameters:
+    ///   - requestUrl: URL which need to be parsed and decoded.
+    ///   - resultType: Type of the Model which holds the response data.
+    ///   - completionHandler: @escaping to hold and return the data after function block.
     func getAPIData<T: Decodable>(from requestUrl: URL, resultType: T.Type, completionHandler: @escaping(_ result: T?, Error?) -> Void) {
         URLSession.shared.dataTask(with: requestUrl) { (data, URLResponse, error) in
             guard let responseData = data else {
@@ -24,7 +30,6 @@ struct ApiHandler {
             let decoder = JSONDecoder()
             do {
                 let result = try decoder.decode(T.self, from: responseData)
-                // debugPrint(result)
                 completionHandler(result, nil)
             }
             catch let error {

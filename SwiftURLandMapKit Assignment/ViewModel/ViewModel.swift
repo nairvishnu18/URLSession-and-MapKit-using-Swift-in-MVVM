@@ -39,6 +39,7 @@ class ViewModelController: ViewModelOpeartions {
     }
     
     
+    /// Fucntion to get API data from API Handler.
     func getData() {
         guard let requestURL = Constants.baseURL else {
             debugPrint(CustomErrors.invalidURL.rawValue)
@@ -57,12 +58,20 @@ class ViewModelController: ViewModelOpeartions {
         }
     }
     
+    /// Returns the row count for tableView
+    ///
+    /// - Returns: row count of type **Integer**
     func getRowCount() -> Int {
         return dataModel?.count ?? 0
     }
     
+    /// Function to get Location coordinates to plot in MapView.
+    ///
+    /// - Returns: Array of type MKPointAnnotation.
     func addAnnotationstoMap() -> [MKPointAnnotation] {
         var locations = [[String:Double]]()
+        var pinAnnotations: [MKPointAnnotation] = []
+        
         dataModel?.forEach({ (coordinates) in
             locations.append(
                 [
@@ -70,7 +79,7 @@ class ViewModelController: ViewModelOpeartions {
                     "longitude": coordinates.location.longitude
                 ])
         })
-        var pinAnnotations: [MKPointAnnotation] = []
+        
         for location in locations {
             let annotations = MKPointAnnotation()
             annotations.coordinate = CLLocationCoordinate2D(
@@ -83,6 +92,9 @@ class ViewModelController: ViewModelOpeartions {
         return pinAnnotations
     }
     
+    /// Function to get coordinates to locate a region in map.
+    ///
+    /// - Returns: Coordinate Regions for zoom level of region.
     func getRegionCoordinates() -> MKCoordinateRegion {
         let centerCoordinates = CLLocationCoordinate2D(latitude: 12.950415, longitude: 77.642605)
         let mapCoordinates = MKCoordinateRegion(center: centerCoordinates, latitudinalMeters: 600, longitudinalMeters: 600)

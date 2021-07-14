@@ -8,8 +8,8 @@
 
 import Foundation
 
-// MARK: - Root Model
-struct CarDataModel: Codable {
+// MARK: - Response Data Model
+struct CarDataModel: Decodable {
     let modelName: String
     let carImageURL: String
     let licensePlate: String
@@ -24,17 +24,17 @@ struct CarDataModel: Codable {
 }
 
 
-enum SeriesType: String, Codable {
+enum SeriesType: String, Decodable {
     case lux = "LUX"
     case regular = "REGULAR"
 }
 
-enum Make: String, Codable {
+enum Make: String, Decodable {
     case bmw = "BMW"
 }
 
 // MARK: - VehicleDetails
-struct VehicleDetails: Codable {
+struct VehicleDetails: Decodable {
     let name: String
     let make: Make
     let series: SeriesType
@@ -46,6 +46,6 @@ struct VehicleDetails: Codable {
 
 
 // MARK: - Location
-struct Location: Codable {
+struct Location: Decodable {
     let latitude, longitude: Double
 }
