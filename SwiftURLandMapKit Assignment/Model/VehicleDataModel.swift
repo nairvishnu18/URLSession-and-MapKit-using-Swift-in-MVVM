@@ -9,7 +9,7 @@
 import Foundation
 
 // MARK: - Response Data Model
-struct CarDataModel: Decodable {
+struct VehicleDataModel: Decodable {
     let modelName: String
     let carImageURL: String
     let licensePlate: String
