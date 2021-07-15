@@ -77,7 +77,7 @@
                                                         <constraint firstItem="bkf-Xb-alF" firstAttribute="width" secondItem="YuZ-qa-l2v" secondAttribute="width" id="QgS-7l-P9h"/>
                                                     </constraints>
                                                 </stackView>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="WtP-ht-dcf">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="WtP-ht-dcf" customClass="LoadImageView" customModule="SwiftURLandMapKit_Assignment" customModuleProvider="target">
                                                     <rect key="frame" x="15" y="15" width="44" height="94"/>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="₹ 100 - 149" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="A9s-Hx-CD1">
