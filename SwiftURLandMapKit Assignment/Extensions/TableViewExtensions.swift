@@ -18,12 +18,9 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let tableCell = tableView.dequeueReusableCell(withIdentifier: "DataCell", for: indexPath) as! CarDeatilsTableViewCell
-        
-        tableCell.carImage.load(ImageURL: viewModel.dataModel![indexPath.row].carImageURL)
-        tableCell.modelName.text = viewModel.dataModel![indexPath.row].modelName
-        tableCell.makeName.text = viewModel.dataModel![indexPath.row].vehicleDetails.make.rawValue
-        tableCell.licensePlate.text = viewModel.dataModel![indexPath.row].licensePlate
+        let tableCell = tableView.dequeueReusableCell(withIdentifier: "DataCell", for: indexPath) as! VehicleDataTableViewCell
+        let modelDataArray = viewModel.dataModel![indexPath.row]
+        tableCell.loadDataToTableCell(modelData: modelDataArray)
         
         return tableCell
     }
