@@ -8,7 +8,7 @@
 
 import UIKit
 
-class CarDeatilsTableViewCell: UITableViewCell {
+class VehicleDataTableViewCell: UITableViewCell {
 
     @IBOutlet weak var carImage: UIImageView!
     @IBOutlet weak var licensePlate: UILabel!
@@ -18,8 +18,19 @@ class CarDeatilsTableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
     }
+    
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
+    }
+    
+    /// Appends Model data to table view content cell .
+    ///
+    /// - Parameter modelData: Model Data
+    func loadDataToTableCell(modelData: VehicleDataModel) {
+        self.carImage.load(ImageURL: modelData.carImageURL)
+        self.licensePlate.text = modelData.licensePlate
+        self.makeName.text = modelData.vehicleDetails.make.rawValue
+        self.modelName.text = modelData.modelName
     }
 
     
