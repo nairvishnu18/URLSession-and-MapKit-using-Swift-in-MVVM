@@ -10,7 +10,7 @@ import UIKit
 
 class VehicleDataTableViewCell: UITableViewCell {
 
-    @IBOutlet weak var carImage: UIImageView!
+    @IBOutlet weak var carImage: LoadImageView!
     @IBOutlet weak var licensePlate: UILabel!
     @IBOutlet weak var makeName: UILabel!
     @IBOutlet weak var modelName: UILabel!
@@ -27,7 +27,7 @@ class VehicleDataTableViewCell: UITableViewCell {
     ///
     /// - Parameter modelData: Model Data
     func loadDataToTableCell(modelData: VehicleDataModel) {
-        self.carImage.load(ImageURL: modelData.carImageURL)
+        self.carImage.loadImage(fromURL: modelData.carImageURL)
         self.licensePlate.text = modelData.licensePlate
         self.makeName.text = modelData.vehicleDetails.make.rawValue
         self.modelName.text = modelData.modelName
