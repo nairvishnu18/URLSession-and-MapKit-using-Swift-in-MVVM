@@ -11,7 +11,7 @@ import MapKit
 
 protocol ViewModelOpeartions {
     
-    var dataModel: [CarDataModel]? {get}
+    var dataModel: [VehicleDataModel]? {get}
     func getData()
     func getRowCount() -> Int
     func addAnnotationstoMap() -> [MKPointAnnotation]
@@ -29,7 +29,7 @@ protocol OutputDelegate: class {
 
 class ViewModelController: ViewModelOpeartions {
     
-    var dataModel: [CarDataModel]?
+    var dataModel: [VehicleDataModel]?
     private let apiHandler : ApiHandler
     weak var outputDelegate: OutputDelegate?
     
@@ -45,7 +45,7 @@ class ViewModelController: ViewModelOpeartions {
             debugPrint(CustomErrors.invalidURL.rawValue)
             return
         }
-        apiHandler.getAPIData(from:requestURL, resultType: [CarDataModel].self) { [weak self] (apiData, error)  in
+        apiHandler.getAPIData(from:requestURL, resultType: [VehicleDataModel].self) { [weak self] (apiData, error)  in
             if error == nil {
                 //debugPrint(carData)
                 self?.dataModel = apiData
@@ -82,11 +82,14 @@ class ViewModelController: ViewModelOpeartions {
         
         for location in locations {
             let annotations = MKPointAnnotation()
-            annotations.coordinate = CLLocationCoordinate2D(
-                latitude: location["latitude"]!,
-                longitude: location["longitude"]!
-            )
-            pinAnnotations.append(annotations)
+            if let _latitude = location["latitude"], let _longitude = location["longitude"] {
+                annotations.coordinate = CLLocationCoordinate2D(
+                    latitude: _latitude,
+                    longitude: _longitude
+                )
+                pinAnnotations.append(annotations)
+            }
+ 
         }
         
         return pinAnnotations
